@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+<section class="pokemon-detail row">
+    <div class="col-lg-12">
+        <div class="container-fluid">
+            <!--  Nom de la page -->
+            <header class="row">
+                <h2 class="col-lg-12 text-center text-white mb-3">Combattre avec <%=pokemon.name%></h2>
+            </header>
+            <main class="row">
+                <!--  Image du Pokémon -->
+                <div class="col-lg-4 image">
+                    <img src="<%= pokemon.img %>">
+                </div>
+
+                <div class="col-lg-8 fiche p-3">
+                    <!--  Nom et type du Pokémon -->
+                    <h3 class="mt-4">#<%=pokemon.numero%> <%=pokemon.name%></h3>
+                    <ul class="type-list reset-list d-inline-flex mt-2 mb-3">
+                        <% for(const type of pokemon.type) { %>
+                        <li><a href="/type/<%=type%>" class="rounded d-block mr-2 p-2 type--<%=type%>"><%=type%></a></li>
+                        <% } %>
+                    </ul>
+
+                    <div class="flex">
+                      <div>
+                        <h4>Avantage contre :</h4>
+                        <ul>
+                          <% weakerPokemons.forEach(weakerPokemon => { %>
+                            <li><%= weakerPokemon.name %></li>
+                          <% }) %>
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4>Désavantage contre :</h4>
+                        <ul>
+                          <% strongerPokemons.forEach(strongerPokemon => { %>
+                            <li><%= strongerPokemon.name %></li>
+                          <% }) %>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="text-center">
+                <a href="/">Revenir à la liste</a>
+            </footer>
+        </div>
+    </div>
+</section>
+<%- include('partials/footer') %>
