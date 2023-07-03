@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+<section class="pokemon-detail row">
+    <div class="col-lg-12">
+        <div class="container-fluid">
+            <header class="row">
+                <h2 class="col-lg-12 text-center text-white mb-3">Détails de <%=pokemon.name%></h2>
+            </header>
+            <main class="row">
+                <div class="col-lg-4 image">
+                    <img src="<%= pokemon.img %>">
+                </div>
+                <div class="col-lg-8 fiche p-3">
+                    <h3 class="mt-4">#<%=pokemon.numero%> <%=pokemon.name%></h3>
+                    <ul class="type-list reset-list d-inline-flex mt-2 mb-3">
+                        <% for(const type of pokemon.type) { %>
+                        <li><a href="/type/<%=type%>" class="rounded d-block mr-2 p-2 type--<%=type%>"><%=type%></a></li>
+                        <% } %>
+                    </ul>
+                    <h4 class="mb-4">Statistiques</h4>
+
+                    <div class="stats container-fluid.no-gutters mb-4">
+
+                        <div class="row">
+                            <div class="col-6">Taille</div>
+                            <div class="col-6"><%=pokemon.height%></div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-6">Poids</div>
+                          <div class="col-6"><%=pokemon.weight%></div>
+                      </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="text-center">
+                <a href="/">Revenir à la liste</a>
+            </footer>
+        </div>
+    </div>
+</section>
+<%- include('partials/footer') %>
